@@ -1,49 +1,39 @@
-import React from 'react';
-import { Code2, Database, Cloud, Cpu, Shield, Zap } from 'lucide-react';
+import React from "react";
+import { Brain, Cloud, Code2, Database, Shield, Workflow } from "lucide-react";
 
 const TechStack: React.FC = () => {
   const technologies = [
-    { name: 'React', category: 'Frontend', icon: Code2, color: 'text-cyan-400' },
-    { name: 'Node.js', category: 'Backend', icon: Database, color: 'text-green-400' },
-    { name: 'Python', category: 'AI/ML', icon: Cpu, color: 'text-yellow-400' },
-    { name: 'AWS', category: 'Cloud', icon: Cloud, color: 'text-orange-400' },
-    { name: 'Docker', category: 'DevOps', icon: Shield, color: 'text-blue-400' },
-    { name: 'GraphQL', category: 'API', icon: Zap, color: 'text-purple-400' },
+    { name: "React + TypeScript", category: "Frontend", icon: Code2, color: "text-cyan-300" },
+    { name: "Node + Python", category: "Backend", icon: Database, color: "text-green-300" },
+    { name: "LLM Orchestration", category: "AI Layer", icon: Brain, color: "text-purple-300" },
+    { name: "AWS / Cloud", category: "Infrastructure", icon: Cloud, color: "text-blue-300" },
+    { name: "Security Controls", category: "Compliance", icon: Shield, color: "text-orange-300" },
+    { name: "Workflow Engines", category: "Automation", icon: Workflow, color: "text-emerald-300" },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
-      </div>
+    <section className="py-20 bg-gray-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(6,182,212,0.15),transparent_40%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Powered by Modern Tech
-          </h2>
-          <p className="text-gray-400 text-lg">
-            We use cutting-edge technologies to build scalable, secure, and performant solutions
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Built on a modern, secure stack</h2>
+          <p className="text-gray-400 max-w-3xl mx-auto">
+            Every delivery is designed for production reliability, observability, and long-term maintainability.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {technologies.map((tech, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+          {technologies.map((tech) => (
             <div
-              key={index}
-              className="interactive group relative p-6 bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl hover:border-cyan-500/50 transition-all duration-300 transform hover:scale-110 hover:rotate-3"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={tech.name}
+              className="rounded-xl border border-white/10 bg-white/5 p-5 hover:border-cyan-400/40 transition-colors"
             >
-              <div className="text-center">
-                <div className={`inline-flex p-3 rounded-lg bg-gray-700/50 mb-4 group-hover:bg-gray-600/50 transition-colors ${tech.color}`}>
-                  <tech.icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-semibold text-white mb-1">{tech.name}</h3>
-                <p className="text-xs text-gray-400">{tech.category}</p>
+              <div className={`inline-flex p-2.5 rounded-lg bg-gray-800 mb-3 ${tech.color}`}>
+                <tech.icon className="w-5 h-5" />
               </div>
-              
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300 -z-10" />
+              <h3 className="font-medium text-white text-sm mb-1">{tech.name}</h3>
+              <p className="text-xs text-gray-400">{tech.category}</p>
             </div>
           ))}
         </div>

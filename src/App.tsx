@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -7,6 +6,7 @@ import ServicesPage from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import PricingPage from "./pages/PricingPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -16,21 +16,22 @@ function App() {
       case "home":
         return <HomePage onNavigate={setCurrentPage} />;
       case "services":
-        return <ServicesPage />;
+        return <ServicesPage onNavigate={setCurrentPage} />;
       case "portfolio":
-        return <PortfolioPage />;
+        return <PortfolioPage onNavigate={setCurrentPage} />;
+      case "pricing":
+        return <PricingPage onNavigate={setCurrentPage} />;
       case "about":
-        return <AboutPage />;
+        return <AboutPage onNavigate={setCurrentPage} />;
       case "contact":
-        return <ContactPage />;
+        return <ContactPage onNavigate={setCurrentPage} />;
       default:
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-      <CustomCursor />
       <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
       {renderPage()}
       <Footer onNavigate={setCurrentPage} />

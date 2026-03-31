@@ -1,148 +1,118 @@
-import React from "react";
-import {
-  Globe,
-  Bot,
-  Phone,
-  Smartphone,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
+﻿import React from "react";
+import { ArrowRight, Bot, Code2, Globe, Phone, Smartphone, Sparkles } from "lucide-react";
 
-// import ServicesPage from "../pages/ServicesPage";
+interface ServicesProps {
+  onNavigate?: (page: string) => void;
+}
 
-const Services: React.FC = () => {
+const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
   const services = [
     {
       icon: Globe,
-      title: "Web Development",
+      title: "AI-Powered Web Development",
       description:
-        "Cutting-edge web applications with modern frameworks, responsive design, and lightning-fast performance.",
-      features: [
-        "React/Next.js",
-        "TypeScript",
-        "Cloud Deployment",
-        "SEO Optimized",
-      ],
+        "High-performance websites and web apps built to convert, scale, and integrate with your AI stack.",
+      features: ["React/Next.js", "Analytics & SEO", "CMS / CRM Integration", "Cloud Deployment"],
+      price: "Starting at ₹35,000",
       gradient: "from-cyan-500 to-blue-500",
-      delay: "0s",
+    },
+    {
+      icon: Code2,
+      title: "Custom Software Development",
+      description:
+        "Tailored software systems designed around your exact operations, workflows, and growth goals.",
+      features: ["Business Portals", "Admin Dashboards", "ERP/CRM Integrations", "Scalable Architecture"],
+      price: "Starting at ₹75,000",
+      gradient: "from-amber-500 to-orange-500",
     },
     {
       icon: Bot,
-      title: "AI Automations",
+      title: "Business Process Automation",
       description:
-        "Intelligent automation solutions that streamline workflows and boost productivity with machine learning.",
-      features: [
-        "Process Automation",
-        "ML Integration",
-        "Data Analytics",
-        "Custom AI Models",
-      ],
-      gradient: "from-purple-500 to-pink-500",
-      delay: "0.2s",
+        "Automate repetitive workflows across operations, support, and sales with practical AI automation.",
+      features: ["Workflow Mapping", "Data Sync", "Approval Flows", "Automation Monitoring"],
+      price: "Starting at ₹40,000",
+      gradient: "from-purple-500 to-indigo-500",
     },
     {
       icon: Phone,
       title: "AI Call Agents",
       description:
-        "Advanced conversational AI agents that handle customer interactions with human-like intelligence.",
-      features: [
-        "Natural Language",
-        "24/7 Availability",
-        "Multi-language",
-        "CRM Integration",
-      ],
-      gradient: "from-green-500 to-cyan-500",
-      delay: "0.4s",
+        "Deploy voice agents that answer calls, qualify leads, and schedule follow-ups around the clock.",
+      features: ["Human-like Voice", "Call Routing", "Multi-language", "CRM Logging"],
+      price: "Starting at ₹60,000",
+      gradient: "from-emerald-500 to-cyan-500",
     },
     {
       icon: Smartphone,
-      title: "Mobile Applications",
+      title: "Mobile App Development",
       description:
-        "Native and cross-platform mobile apps that deliver exceptional user experiences across all devices.",
-      features: [
-        "iOS & Android",
-        "React Native",
-        "Push Notifications",
-        "Offline Support",
-      ],
-      gradient: "from-orange-500 to-red-500",
-      delay: "0.6s",
+        "Cross-platform mobile apps with AI-assisted experiences and robust backend integrations.",
+      features: ["iOS & Android", "React Native", "Notifications", "Offline-First UX"],
+      price: "Starting at ₹90,000",
+      gradient: "from-orange-500 to-rose-500",
     },
   ];
 
   return (
     <section className="py-24 bg-gray-900 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-blue-900/20 to-gray-900" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 text-sm font-medium">
-              Our Services
-            </span>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-5">
+            <Sparkles className="w-4 h-4 text-cyan-300" />
+            <span className="text-cyan-300 text-sm font-medium">Core Services</span>
           </div>
-
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent">
-            What We Build
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            End-to-end AI implementation services
           </h2>
-
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            From concept to deployment, we deliver innovative solutions that
-            transform your business
+          <p className="text-gray-400 max-w-3xl mx-auto">
+            Transparent starting prices in INR so you can plan your next AI project with confidence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+          {services.map((service) => (
             <div
-              key={index}
-              className="interactive group relative p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl hover:border-cyan-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/10"
-              style={{ animationDelay: service.delay }}
+              key={service.title}
+              className="group rounded-2xl border border-white/10 bg-gray-900/60 p-7 hover:border-cyan-400/40 transition-colors"
             >
-              {/* Glow effect */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}
-              />
+              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.gradient} mb-5`}>
+                <service.icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-semibold text-white mb-3">{service.title}</h3>
+              <p className="text-gray-400 leading-relaxed mb-4">{service.description}</p>
+              <p className="text-cyan-300 font-semibold mb-6">{service.price}</p>
 
-              <div className="relative z-10">
-                <div
-                  className={`inline-flex p-4 bg-gradient-to-r ${service.gradient} rounded-xl mb-6 shadow-lg`}
-                >
-                  <service.icon className="w-8 h-8 text-white" />
-                </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors">
-                  {service.title}
-                </h3>
-
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <div
-                        className={`w-2 h-2 bg-gradient-to-r ${service.gradient} rounded-full`}
-                      />
-                      <span className="text-sm text-gray-300">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                  <button className="interactive flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium group-hover:translate-x-2 transition-all duration-300">
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
+              <div className="grid grid-cols-2 gap-2 mb-6">
+                {service.features.map((feature) => (
+                  <button
+                    key={feature}
+                    type="button"
+                    onClick={() => onNavigate?.("contact")}
+                    className="text-left text-sm text-gray-300 hover:text-cyan-200 transition-colors"
+                  >
+                    • {feature}
                   </button>
-                
+                ))}
               </div>
 
-              {/* 3D floating element */}
-              <div
-                className={`absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r ${service.gradient} rounded-full opacity-60 animate-pulse`}
-              />
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => onNavigate?.("contact")}
+                  className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200 font-medium"
+                >
+                  Discuss this service
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => onNavigate?.("pricing")}
+                  className="text-sm text-gray-300 hover:text-white"
+                >
+                  View full pricing
+                </button>
+              </div>
             </div>
           ))}
         </div>
